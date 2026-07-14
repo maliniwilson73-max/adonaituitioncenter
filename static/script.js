@@ -85,23 +85,47 @@ if (contactForm) {
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
         const classSelected = document.getElementById('class').value;
-        const message = document.getElementById('message').value;
-
+        
         // Validate form
         if (!name || !phone || !classSelected) {
             alert('Please fill in all required fields');
             return;
         }
 
-        // Create WhatsApp message
-        const whatsappMessage = `Hello! I'm interested in joining Adonai Tuition Center.\n\nName: ${name}\nPhone: ${phone}\nClass Interested: ${classSelected}\nMessage: ${message || 'No additional message'}`;
-        
-        // Encode and redirect to WhatsApp
-        const whatsappUrl = `https://wa.me/919841563747?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappUrl, '_blank');
+        const formData = new FormData(contactForm);
+        const action = contactForm.getAttribute('action');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnHtml = submitBtn.innerHTML;
 
-        // Optional: Reset form
-        contactForm.reset();
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+        submitBtn.disabled = true;
+
+        fetch(action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('formSuccessMessage').classList.remove('d-none');
+                document.getElementById('formErrorMessage').classList.add('d-none');
+                contactForm.reset();
+                contactForm.style.display = 'none';
+            } else {
+                document.getElementById('formErrorMessage').classList.remove('d-none');
+                document.getElementById('formSuccessMessage').classList.add('d-none');
+            }
+        })
+        .catch(error => {
+            document.getElementById('formErrorMessage').classList.remove('d-none');
+            document.getElementById('formSuccessMessage').classList.add('d-none');
+        })
+        .finally(() => {
+            submitBtn.innerHTML = originalBtnHtml;
+            submitBtn.disabled = false;
+        });
     });
 }
 

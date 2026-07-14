@@ -5,21 +5,27 @@
 }
 
 :root {
-    --primary-color: #1E3A8A;
-    --secondary-color: #2563EB;
-    --accent-color: #F59E0B;
+    --primary-color: #1B3A6B;       /* Deep royal navy blue */
+    --secondary-color: #2563EB;     /* Vivid blue */
+    --accent-color: #2563EB;        /* Use Vivid blue instead of Rich PDF gold */
+    --accent-light: #60A5FA;        /* Bright blue instead of gold yellow */
+    --accent-dark: #1D4ED8;         /* Dark blue instead of antique gold */
+    --gold-gradient: linear-gradient(135deg, #1B3A6B 0%, #2563EB 100%); /* Blue gradient instead of gold */
+    --blue-gold-gradient: linear-gradient(135deg, #1B3A6B 0%, #2563EB 100%);
     --dark-color: #1F2937;
-    --light-color: #F3F4F6;
+    --light-color: #F3F4F6;         /* Neutral light bg instead of warm golden tint */
     --white: #FFFFFF;
     --text-color: #374151;
-    --border-color: #E5E7EB;
+    --border-color: #D1D5DB;        /* Light neutral border instead of gold-tinted border */
     --success-color: #10B981;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-gold: 0 10px 30px rgba(37, 99, 235, 0.15); /* Blue shadow instead of gold shadow */
 }
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -80,12 +86,13 @@ p {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
     color: var(--white);
+    box-shadow: var(--shadow-gold);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #1a2a5c 0%, #1e50d0 100%);
+    background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent-color) 50%, var(--accent-light) 100%);
     color: var(--white);
     text-decoration: none;
 }
@@ -141,22 +148,27 @@ p {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     padding: 1rem 0;
     transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color)) 1;
 }
 
 .navbar.scrolled {
     padding: 0.5rem 0;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-gold);
 }
 
 .navbar-brand {
     font-size: 1.5rem;
-    color: var(--primary-color);
+    background: var(--blue-gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 800;
     transition: all 0.3s ease;
 }
 
 .navbar-brand:hover {
-    color: var(--secondary-color);
+    opacity: 0.85;
 }
 
 .navbar-brand i {
@@ -173,7 +185,7 @@ p {
 }
 
 .nav-link:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 .nav-link::after {
@@ -183,7 +195,7 @@ p {
     height: 2px;
     bottom: -5px;
     left: 50%;
-    background: var(--secondary-color);
+    background: var(--gold-gradient);
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
@@ -212,7 +224,7 @@ p {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1B4DB5 40%, #1a6090 70%, #1B3A6B 100%);
 }
 
 .hero-section::before {
@@ -233,7 +245,7 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(30, 58, 138, 0.7);
+    background: linear-gradient(135deg, rgba(27, 58, 107, 0.85) 0%, rgba(37, 99, 235, 0.6) 100%);
     z-index: 2;
 }
 
@@ -242,15 +254,23 @@ p {
     z-index: 3;
 }
 
-.badge-hero {
+.excellence-heading {
     display: inline-block;
-    background: rgba(245, 158, 11, 0.2);
-    color: var(--accent-color);
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 600;
+    color: var(--white);
+    font-size: 2.2rem;
+    font-weight: 900;
     margin-bottom: 1.5rem;
-    border: 1px solid var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border-bottom: 4px solid var(--accent-light);
+    padding-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .excellence-heading {
+        font-size: 1.5rem;
+    }
 }
 
 .hero-title {
@@ -311,12 +331,14 @@ p {
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
+    background: var(--primary-color);
 }
 
 .about-image img {
     width: 100%;
     height: auto;
     display: block;
+    mix-blend-mode: multiply;
 }
 
 .about-image-badge {
@@ -339,8 +361,23 @@ p {
 }
 
 .about-features {
-    display: grid;
-    gap: 1.5rem;
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2.5rem;
+    margin-top: 2rem;
+    padding: 2.5rem;
+    background: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .about-features {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
 }
 
 .feature-item {
@@ -350,14 +387,14 @@ p {
 }
 
 .feature-item i {
-    color: var(--secondary-color);
+    color: var(--white);
     font-size: 1.5rem;
     flex-shrink: 0;
 }
 
 .feature-item span {
-    font-weight: 500;
-    color: var(--text-color);
+    font-weight: 600;
+    color: var(--white);
 }
 
 .courses-section {
@@ -387,7 +424,7 @@ p {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
 }
 
 .course-badge {
@@ -406,7 +443,10 @@ p {
 
 .course-icon {
     font-size: 3rem;
-    color: var(--secondary-color);
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 1rem;
 }
 
@@ -471,7 +511,10 @@ p {
 
 .feature-icon {
     font-size: 3rem;
-    color: var(--secondary-color);
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 1rem;
 }
 
@@ -486,7 +529,7 @@ p {
 }
 
 .achievements-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1B4DB5 40%, #0E5580 70%, #1B3A6B 100%);
     color: var(--white);
 }
 
@@ -497,6 +540,11 @@ p {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .achievement-card:hover {
@@ -508,7 +556,7 @@ p {
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--accent-color);
+    color: var(--white);
 }
 
 .achievement-number span:last-child {
