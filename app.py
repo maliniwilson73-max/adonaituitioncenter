@@ -133,7 +133,10 @@ def delete_enrollment(enrollment_id):
     return redirect(url_for('enrollments'))
 
 
+# Initialize the database on startup (needed for production/Render)
+with app.app_context():
+    init_db()
+
 if __name__ == '__main__':
-    with app.app_context():
-        init_db()
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
