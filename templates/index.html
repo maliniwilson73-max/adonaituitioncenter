@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adonai Tuition Center - Expert Coaching for Classes 1st to 10th Standard with 25+ Years of Teaching Experience">
+    <meta name="keywords" content="tuition, coaching center, classes 1-10, mathematics, science, english, mrs ferdina melven">
+    <title>Adonai Tuition Center - Building Strong Foundations for Academic Excellence</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919841563747?text=Hello%20Adonai%20Tuition%20Center" class="whatsapp-button" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-graduation-cap me-2"></i>Adonai Tuition
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#why-us">Why Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn-enroll" href="#admission">Enroll Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center">
+                    <div class="col-lg-10 text-center" data-aos="fade-up" data-aos-duration="1000">
+                        <h2 class="excellence-heading">25+ Years of Excellence</h2>
+                        <h1 class="hero-title">Empowering Young Minds for a Brighter Future</h1>
+                        <p class="hero-subtitle">Expert Coaching for All Subjects (Except Hindi) Classes 1st to 10th Standard</p>
+                        <div class="hero-buttons mt-4">
+                            <a href="#admission" class="btn btn-outline-light btn-lg me-3">
+                                <i class="fas fa-user-plus me-2"></i>Enroll Now
+                            </a>
+                            <a href="#contact" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-phone me-2"></i>Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-duration="1000">
+                    <h2 class="section-title">About Mrs. Ferdina Melven</h2>
+                    <p class="section-subtitle">Dedicated Educator & Founder of Adonai Tuition Center</p>
+                    <p class="about-text">
+                        Mrs. Ferdina Melven is a passionate educator with over 25 years of teaching experience. She has successfully guided hundreds of students toward academic excellence through personalized teaching methods, regular assessments, and individual attention. Her commitment to student success and innovative teaching approaches have made Adonai Tuition Center a trusted choice for parents and students across the city.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Personalized Learning Approach</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Individual Attention & Support</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Concept-Based Teaching Method</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Friendly Learning Environment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses-section py-80">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-title">Our Course Programs</h2>
+                <p class="section-subtitle">Comprehensive Coaching for All Classes</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Classes 1-5 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="course-card featured">
+                        <div class="course-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Classes 1-5</h3>
+                        <p class="course-description">Foundation Building Years</p>
+                        <ul class="course-subjects">
+                            <li><i class="fas fa-star"></i> All Core Subjects</li>
+                            <li><i class="fas fa-star"></i> Foundation Building</li>
+                            <li><i class="fas fa-star"></i> Homework Support</li>
+                            <li><i class="fas fa-star"></i> Basic Concepts</li>
+                        </ul>
+                        <a href="#admission" class="btn-course">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Classes 6-8 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="course-card featured">
+                        <div class="course-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Classes 6-8</h3>
+                        <p class="course-description">Middle School Excellence</p>
+                        <div class="course-features mb-3 text-start">
+                            <span class="badge bg-primary rounded-pill mb-1 p-2">Concept Mastery</span>
+                            <span class="badge bg-primary rounded-pill mb-1 p-2">Personalized Learning</span>
+                            <span class="badge bg-primary rounded-pill mb-1 p-2">Skill Development</span>
+                            <span class="badge bg-primary rounded-pill mb-1 p-2">Exam Preparation</span>
+                        </div>
+                        <h6 class="text-start mt-3 mb-2 fw-bold text-primary">Subjects Taught:</h6>
+                        <ul class="course-subjects">
+                            <li><i class="fas fa-book-open"></i> English</li>
+                            <li><i class="fas fa-language"></i> Tamil</li>
+                            <li><i class="fas fa-calculator"></i> Mathematics</li>
+                            <li><i class="fas fa-microscope"></i> Science</li>
+                            <li><i class="fas fa-globe"></i> Social Studies</li>
+                        </ul>
+                        <a href="#admission" class="btn-course">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Classes 9-10 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="course-card featured">
+                        <div class="course-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Classes 9-10</h3>
+                        <p class="course-description">Board Exam Excellence</p>
+                        <ul class="course-subjects">
+                            <li><i class="fas fa-star"></i> Board Preparation</li>
+                            <li><i class="fas fa-star"></i> Advanced Concepts</li>
+                            <li><i class="fas fa-star"></i> Mock Tests</li>
+                            <li><i class="fas fa-star"></i> Score Improvement</li>
+                        </ul>
+                        <a href="#admission" class="btn-course">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-us-section py-80">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-title">Why Choose Adonai?</h2>
+                <p class="section-subtitle">Excellence in Every Aspect of Education</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>25+ Years Experience</h4>
+                        <p>Proven track record of academic excellence and student success</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Individual Attention</h4>
+                        <p>Personalized focus on each student's learning needs</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users-class"></i>
+                        </div>
+                        <h4>Small Batch Size</h4>
+                        <p>Limited seats per batch to ensure quality teaching</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <h4>Regular Tests</h4>
+                        <p>Frequent assessments to track progress and improvement</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h4>Homework Assistance</h4>
+                        <p>Complete support with school assignments and projects</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="250">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <h4>Friendly Environment</h4>
+                        <p>Comfortable and supportive learning atmosphere</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Performance Tracking</h4>
+                        <p>Regular feedback and progress reports for parents</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="350">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <h4>Affordable Fees</h4>
+                        <p>Competitive pricing with excellent quality education</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements-section py-80">
+        <div class="container">
+            <div class="row text-center g-4 justify-content-center align-items-center">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="achievement-card">
+                        <div class="achievement-number">
+                            <span class="counter" data-target="25">0</span><span>+</span>
+                        </div>
+                        <h4>Years of Experience</h4>
+                        <p>Dedicated to educational excellence</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="achievement-card">
+                        <div class="achievement-number">
+                            <span class="counter" data-target="500">0</span><span>+</span>
+                        </div>
+                        <h4>Students Guided</h4>
+                        <p>Successfully coached to excellence</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="achievement-card">
+                        <div class="achievement-number">
+                            <span class="counter" data-target="95">0</span><span>%</span>
+                        </div>
+                        <h4>Success Rate</h4>
+                        <p>Students achieving excellent scores</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="achievement-card">
+                        <div class="achievement-number">
+                            <span class="counter" data-target="100">0</span><span>%</span>
+                        </div>
+                        <h4>Parent Satisfaction</h4>
+                        <p>Trusted by families across the city</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section py-80">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-title">Student & Parent Reviews</h2>
+                <p class="section-subtitle">Success Stories from Our Community</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Both my daughter's attended classes here. Exceptional teacher, firm tutor who gave personal attention to all her pupils. Engaged my children with various art activities during summer vacation. Highly recommended."</p>
+                        <div class="testimonial-author">
+                            <div>
+                                <h5>Devina Anto</h5>
+                                <span>4 reviews · 4 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The right place for CBSE and international syllabus. Dedicated teacher who handles classes even during summer holidays. Seems to be experienced. I wish Mrs. Ferdina is in good health and assists the students to achieve their dreams."</p>
+                        <div class="testimonial-author">
+                            <div>
+                                <h5>Shalom Tuition Centre</h5>
+                                <span>Local Guide · 34 reviews · 2 photos · 1 year ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"My son got Individual attention. Ma'am was firm yet gentle in dealing with the students. Tuition centre was very professionally managed. We were able to see a significant improvement in the overall grades of my son. Highly recommended."</p>
+                        <div class="testimonial-author">
+                            <div>
+                                <h5>Beatrice Asha</h5>
+                                <span>4 reviews · 1 photo · 3 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Section -->
+    <section id="admission" class="admission-section py-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-duration="1000">
+                    <h2 class="section-title">Admissions Open</h2>
+                    <p class="section-subtitle">Join Adonai Tuition Center Today</p>
+                    <div class="admission-content">
+                        <p>Admissions are now open for Classes 1st to 10th Standard. We have limited seats available for each batch to ensure personal attention and effective learning for every student.</p>
+                        <div class="admission-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Small batch sizes with personalized attention</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Experienced educator with 25+ years background</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Regular tests and performance tracking</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexible timings and homework support</span>
+                            </div>
+                        </div>
+                        <div class="admission-buttons mt-4">
+                            <a href="#contact" class="btn btn-primary btn-lg me-2">Register Now</a>
+                            <a href="tel:+919841563747" class="btn btn-primary btn-lg">
+                                <i class="fas fa-phone me-2"></i>Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-80">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">We're Here to Help You Achieve Excellence</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Contact Info Cards -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Adonai Tuition Center</h4>
+                        <p>33rd Cross St, Tiruvalluvar Nagar, Besant Nagar, Chennai, Greater Chennai, Tamil Nadu 600090, India</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Phone Number</h4>
+                        <p><a href="tel:+919841563747" class="text-primary fw-bold">+91 9841563747</a></p>
+                        <p class="text-muted">Available for Inquiries</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/919841563747" class="text-primary fw-bold" target="_blank">+91 9841563747</a></p>
+                        <p class="text-muted">Quick Response</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Working Hours</h4>
+                        <p>Monday – Saturday</p>
+                        <p class="text-muted">4:30 PM – 7:30 PM</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4>Classes</h4>
+                        <p>1st to 10th Standard</p>
+                        <p class="text-muted">All Subjects Except Hindi</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Contact Form</h4>
+                        <p>Fill the form below</p>
+                        <p class="text-muted">We'll get back soon</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form and Map -->
+            <div class="row mt-5 g-4">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="contact-form-wrapper">
+                        <h3 class="mb-4">Send us a Message</h3>
+                        <div id="formSuccessMessage" class="alert alert-success d-none">
+                            Thank you! Your message has been successfully delivered.
+                        </div>
+                        <div id="formErrorMessage" class="alert alert-danger d-none">
+                            Oops! There was a problem submitting your form.
+                        </div>
+                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/xyzkqabp" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="class" class="form-label">Class Interested In</label>
+                                <select class="form-control" id="class" name="class" required>
+                                    <option value="">Select Class</option>
+                                    <option value="1-5">Classes 1-5</option>
+                                    <option value="6-8">Classes 6-8</option>
+                                    <option value="9-10">Classes 9-10</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="map-wrapper">
+                        <iframe src="https://maps.google.com/maps?q=33rd%20Cross%20St,%20Tiruvalluvar%20Nagar,%20Besant%20Nagar,%20Chennai,%20Tamil%20Nadu%20600090,%20India&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <h5>Adonai Tuition Center</h5>
+                    <p class="text-muted small">Building strong foundations for academic excellence since 2006.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919841563747" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Courses</h5>
+                    <ul class="footer-links">
+                        <li><a href="#courses">Classes 1-5</a></li>
+                        <li><a href="#courses">Classes 6-8</a></li>
+                        <li><a href="#courses">Classes 9-10</a></li>
+                        <li><a href="#admission">Admissions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Contact Details</h5>
+                    <p class="text-muted small">
+                        <i class="fas fa-phone me-2"></i><a href="tel:+919841563747" class="text-muted text-decoration-none">+91 9841563747</a><br>
+                        <i class="fas fa-clock me-2"></i>Mon-Sat: 4:30 PM - 7:30 PM<br>
+                        <i class="fas fa-graduation-cap me-2"></i>Classes 1st to 10th
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center py-3">
+                <p class="text-muted small mb-0">&copy; 2026 Adonai Tuition Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
