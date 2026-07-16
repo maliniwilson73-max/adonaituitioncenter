@@ -1,0 +1,8 @@
+tunnel: tuition-center-app
+credentials-file: .cloudflared/tuition-center-app.json
+
+ingress:
+  - hostname: yourdomain.example.com
+    service: http://localhost:5000
+
+  - service: http_status:404
