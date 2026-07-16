@@ -1,0 +1,5 @@
+name = "adonaituitioncenter"
+compatibility_date = "2026-07-16"
+type = "javascript"
+
+site = { bucket = "./dist" }
