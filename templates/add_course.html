@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <div class="page-header">
+    <h1>Add Course</h1>
+  </div>
+  <form method="post" class="form-panel">
+    <label>Title</label>
+    <input type="text" name="title" required />
+    <label>Description</label>
+    <textarea name="description"></textarea>
+    <button type="submit" class="button button-primary">Save Course</button>
+  </form>
+{% endblock %}
