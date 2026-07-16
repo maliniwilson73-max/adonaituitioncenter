@@ -77,102 +77,18 @@ if (achievementSection) {
 }
 
 // Contact Form Submission
-const courseOptions = {
-    'Regular Tuition': [
-        'English',
-        'Tamil',
-        'Mathematics',
-        'Science',
-        'Social Studies'
-    ],
-    'Summer Program': [
-        '10th Standard Mathematics',
-        '10th Standard Science',
-        'Maths Improvement',
-        'English Grammar & Reading Skills'
-    ]
-};
-
-function updateCourseOptions(program) {
-    const courseSelect = document.querySelector('#course');
-    if (!courseSelect) {
-        return;
-    }
-
-    courseSelect.innerHTML = '<option value="" disabled selected>Select Subject / Course</option>';
-    courseSelect.disabled = true;
-
-    if (!courseOptions[program]) {
-        return;
-    }
-
-    courseOptions[program].forEach(optionText => {
-        const option = document.createElement('option');
-        option.value = optionText;
-        option.textContent = optionText;
-        courseSelect.appendChild(option);
-    });
-
-    courseSelect.disabled = false;
-}
-
-function onProgramChange() {
-    const programSelect = document.querySelector('#program');
-    const courseSelect = document.querySelector('#course');
-    if (!programSelect || !courseSelect) {
-        return;
-    }
-    updateCourseOptions(programSelect.value);
-    courseSelect.classList.remove('is-invalid');
-}
-
-window.onProgramChange = onProgramChange;
-
-function initializeContactForm() {
-    const contactForm = document.querySelector('#contactForm');
-    const programSelect = document.querySelector('#program');
-    const courseSelect = document.querySelector('#course');
-
-    if (programSelect && courseSelect) {
-        programSelect.addEventListener('change', onProgramChange);
-        if (programSelect.value) {
-            updateCourseOptions(programSelect.value);
-        }
-    }
-
-    if (!programSelect || !courseSelect || !contactForm) {
-        return;
-    }
-
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        const studentName = document.getElementById('studentName');
-        const parentName = document.getElementById('parentName');
-        const schoolName = document.getElementById('schoolName');
-        const phone = document.getElementById('phone');
-        const classSelect = document.getElementById('class');
-        const program = document.getElementById('program');
-        const course = document.getElementById('course');
-
-        let isValid = true;
-
-        [studentName, parentName, schoolName, phone, classSelect, program, course].forEach(field => {
-            field.classList.remove('is-invalid');
-            if (!field.value || field.value.trim() === '') {
-                field.classList.add('is-invalid');
-                isValid = false;
-            }
-        });
-
-        if (phone.value && !validatePhone(phone.value)) {
-            phone.classList.add('is-invalid');
-            isValid = false;
-        }
-
-        if (!isValid) {
-            document.getElementById('formErrorMessage').classList.remove('d-none');
-            document.getElementById('formSuccessMessage').classList.add('d-none');
+        
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const classSelected = document.getElementById('class').value;
+        
+        // Validate form
+        if (!name || !phone || !classSelected) {
+            alert('Please fill in all required fields');
             return;
         }
 
@@ -181,7 +97,7 @@ function initializeContactForm() {
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalBtnHtml = submitBtn.innerHTML;
 
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
         submitBtn.disabled = true;
 
         fetch(action, {
@@ -196,13 +112,13 @@ function initializeContactForm() {
                 document.getElementById('formSuccessMessage').classList.remove('d-none');
                 document.getElementById('formErrorMessage').classList.add('d-none');
                 contactForm.reset();
-                updateCourseOptions('');
+                contactForm.style.display = 'none';
             } else {
                 document.getElementById('formErrorMessage').classList.remove('d-none');
                 document.getElementById('formSuccessMessage').classList.add('d-none');
             }
         })
-        .catch(() => {
+        .catch(error => {
             document.getElementById('formErrorMessage').classList.remove('d-none');
             document.getElementById('formSuccessMessage').classList.add('d-none');
         })
@@ -211,12 +127,6 @@ function initializeContactForm() {
             submitBtn.disabled = false;
         });
     });
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeContactForm);
-} else {
-    initializeContactForm();
 }
 
 // Navbar active link indicator
