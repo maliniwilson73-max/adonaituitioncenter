@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Adonai Tuition Center">
+  <defs>
+    <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#1E3A8A"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#fg)"/>
+  <path d="M32 16 L52 25 L32 34 L12 25 Z" fill="#FBBF24"/>
+  <path d="M20 29 v9 c0 4 5 6 12 6 s12-2 12-6 v-9 l-12 5.5 Z" fill="#FFFFFF"/>
+  <line x1="52" y1="25" x2="52" y2="40" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="52" cy="41" r="3" fill="#FBBF24"/>
+</svg>
