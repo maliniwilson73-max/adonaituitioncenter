@@ -1,5 +1,3 @@
 name = "adonaituitioncenter"
 compatibility_date = "2026-07-16"
-type = "javascript"
-
-site = { bucket = "./dist" }
+pages_build_output_dir = "./dist"
