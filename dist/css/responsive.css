@@ -21,7 +21,7 @@
   .about-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 
-  .nav-toggle { display: grid; }
+  .nav-toggle { display: grid; margin-left: auto; }
   .nav-cta { display: none; }
   .nav-links {
     position: fixed; inset: var(--nav-h) 0 auto 0; flex-direction: column; align-items: stretch;
@@ -50,7 +50,8 @@
   :root { --nav-h: 64px; }
   .grid-4, .grid-5 { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-  .brand span { display: none; }
+  .brand b { font-size: 1.1rem; }
+  .brand > span > span { font-size: .58rem; }
   .hero-stats { gap: 1.6rem; }
   .admissions-actions { max-width: 100%; }
 }
