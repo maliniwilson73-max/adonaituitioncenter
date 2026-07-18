@@ -361,13 +361,19 @@
             </div>
             <div class="field">
               <label id="subjectsLabel">Subjects <span class="req">*</span></label>
-              <div class="checkbox-grid" data-checkgroup role="group" aria-labelledby="subjectsLabel">
-                <label class="check-opt"><input type="checkbox" name="subjects" value="English" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">English</span></label>
-                <label class="check-opt"><input type="checkbox" name="subjects" value="Tamil" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">Tamil</span></label>
-                <label class="check-opt"><input type="checkbox" name="subjects" value="Mathematics" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">Mathematics</span></label>
-                <label class="check-opt"><input type="checkbox" name="subjects" value="Science" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">Science</span></label>
-                <label class="check-opt"><input type="checkbox" name="subjects" value="Social Studies" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">Social Studies</span></label>
-                <label class="check-opt check-all"><input type="checkbox" name="subjects" value="All Subjects" data-all="true" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">All Subjects</span></label>
+              <div class="multiselect" data-multiselect>
+                <div class="ms-control" role="combobox" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-controls="msMenu" aria-labelledby="subjectsLabel">
+                  <span class="ms-chips"><span class="ms-placeholder">Select Subject(s)</span></span>
+                  <i class="bi bi-chevron-down ms-arrow" aria-hidden="true"></i>
+                </div>
+                <ul class="ms-menu" id="msMenu" role="listbox" aria-multiselectable="true" aria-labelledby="subjectsLabel">
+                  <li class="ms-option" role="option" data-value="English" aria-selected="false"><span class="ms-check"><i class="bi bi-check-lg"></i></span> English</li>
+                  <li class="ms-option" role="option" data-value="Tamil" aria-selected="false"><span class="ms-check"><i class="bi bi-check-lg"></i></span> Tamil</li>
+                  <li class="ms-option" role="option" data-value="Mathematics" aria-selected="false"><span class="ms-check"><i class="bi bi-check-lg"></i></span> Mathematics</li>
+                  <li class="ms-option" role="option" data-value="Science" aria-selected="false"><span class="ms-check"><i class="bi bi-check-lg"></i></span> Science</li>
+                  <li class="ms-option" role="option" data-value="Social Studies" aria-selected="false"><span class="ms-check"><i class="bi bi-check-lg"></i></span> Social Studies</li>
+                  <li class="ms-option ms-option-all" role="option" data-value="All Subjects" data-all="true" aria-selected="false"><span class="ms-check"><i class="bi bi-check-lg"></i></span> All Subjects</li>
+                </ul>
               </div>
               <div class="err">Please select at least one subject.</div>
             </div>

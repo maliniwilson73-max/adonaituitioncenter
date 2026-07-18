@@ -97,10 +97,10 @@
     name: (v) => /^[a-zA-ZÀ-ɏ .'-]{2,}$/.test(v.trim())
   };
   const validateField = (field) => {
-    // Checkbox group (e.g. Subjects) — valid when at least one box is checked
-    const group = field.querySelector('[data-checkgroup]');
-    if (group) {
-      const ok = group.querySelectorAll('input[type="checkbox"]:checked').length > 0;
+    // Multi-select subjects — valid when at least one option is selected
+    const ms = field.querySelector('[data-multiselect]');
+    if (ms) {
+      const ok = ms.querySelectorAll('.ms-option.selected').length > 0;
       field.classList.toggle('invalid', !ok);
       return ok;
     }
@@ -122,22 +122,70 @@
       input && input.addEventListener('input', () => { if (f.classList.contains('invalid')) validateField(f); });
     });
 
-    /* Subjects checkbox group + "All Subjects" logic */
-    const group = form.querySelector('[data-checkgroup]');
+    /* Subjects multi-select dropdown (chips + exclusive "All Subjects") */
+    const ms = form.querySelector('[data-multiselect]');
     let resetGroup = null;
-    if (group) {
-      const groupField = group.closest('.field');
-      const allBox = group.querySelector('input[data-all]');
-      const boxes = Array.from(group.querySelectorAll('input[type="checkbox"]')).filter(cb => cb !== allBox);
-      // When "All Subjects" is checked: check + disable the individual boxes; when unchecked: re-enable them
-      const applyAll = () => boxes.forEach(cb => { cb.disabled = allBox.checked; if (allBox.checked) cb.checked = true; });
-      allBox.addEventListener('change', () => { applyAll(); validateField(groupField); });
-      boxes.forEach(cb => cb.addEventListener('change', () => {
-        allBox.checked = boxes.every(x => x.checked);   // auto-check "All" when every subject is picked
-        applyAll();
-        validateField(groupField);
-      }));
-      resetGroup = () => { allBox.checked = false; boxes.forEach(cb => { cb.checked = false; cb.disabled = false; }); };
+    if (ms) {
+      const control = ms.querySelector('.ms-control');
+      const chipsWrap = ms.querySelector('.ms-chips');
+      const placeholder = ms.querySelector('.ms-placeholder');
+      const options = Array.from(ms.querySelectorAll('.ms-option'));
+      const msField = ms.closest('.field');
+      const selected = new Set();
+
+      const toggle = (v, force) => {
+        const willSelect = (force !== undefined) ? force : !selected.has(v);
+        if (willSelect) {
+          if (v === 'All Subjects') { selected.clear(); selected.add(v); }   // exclusive
+          else { selected.delete('All Subjects'); selected.add(v); }         // individual clears "All"
+        } else { selected.delete(v); }
+        render();
+      };
+      const render = () => {
+        chipsWrap.querySelectorAll('.ms-chip').forEach(c => c.remove());
+        placeholder.style.display = selected.size ? 'none' : '';
+        options.forEach(opt => {
+          const v = opt.dataset.value, on = selected.has(v);
+          opt.classList.toggle('selected', on);
+          opt.setAttribute('aria-selected', on ? 'true' : 'false');
+          if (on) {
+            const chip = document.createElement('span');
+            chip.className = 'ms-chip';
+            const t = document.createElement('span'); t.textContent = v; chip.appendChild(t);
+            const x = document.createElement('button');
+            x.type = 'button'; x.className = 'ms-chip-x'; x.setAttribute('aria-label', 'Remove ' + v); x.innerHTML = '&times;';
+            x.addEventListener('click', (e) => { e.stopPropagation(); toggle(v, false); });
+            chip.appendChild(x);
+            chipsWrap.appendChild(chip);
+          }
+        });
+        if (msField.classList.contains('invalid')) validateField(msField);
+      };
+
+      const open = () => { ms.classList.add('open'); control.setAttribute('aria-expanded', 'true'); };
+      const close = () => { ms.classList.remove('open'); control.setAttribute('aria-expanded', 'false'); };
+      control.addEventListener('click', (e) => {
+        if (e.target.closest('.ms-chip-x')) return;
+        ms.classList.contains('open') ? close() : open();
+      });
+      control.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); options[0].focus(); }
+        else if (e.key === 'Escape') close();
+      });
+      options.forEach((opt, i) => {
+        opt.setAttribute('tabindex', '-1');
+        opt.addEventListener('click', () => toggle(opt.dataset.value));
+        opt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(opt.dataset.value); }
+          else if (e.key === 'ArrowDown') { e.preventDefault(); (options[i + 1] || options[0]).focus(); }
+          else if (e.key === 'ArrowUp') { e.preventDefault(); (options[i - 1] || options[options.length - 1]).focus(); }
+          else if (e.key === 'Escape' || e.key === 'Tab') { close(); control.focus(); }
+        });
+      });
+      document.addEventListener('click', (e) => { if (!ms.contains(e.target)) close(); });
+
+      resetGroup = () => { selected.clear(); render(); close(); };
+      render();
     }
 
     form.addEventListener('submit', (e) => {
@@ -149,8 +197,8 @@
         if (form.querySelector('#cname')) {
           const val = (id) => { const el = form.querySelector('#' + id); return el ? el.value.trim() : ''; };
           let subj = '-';
-          if (group) {
-            const picked = Array.from(group.querySelectorAll('input[type="checkbox"]:checked')).map(c => c.value);
+          if (ms) {
+            const picked = Array.from(ms.querySelectorAll('.ms-option.selected')).map(o => o.dataset.value);
             subj = picked.includes('All Subjects') ? 'All Subjects' : (picked.join(', ') || '-');
           }
           const msg = [
