@@ -43,6 +43,25 @@
   .section { padding: 3.2rem 0; }
   .hero { min-height: auto; padding-top: calc(var(--nav-h) + 2.5rem); }
   .hero-cta .btn { width: 100%; }
+
+  /* "Get in Touch" cards: show the desktop hover highlight by default on mobile */
+  .info-card {
+    background: #F5F9FF;
+    border-color: rgba(37, 99, 235, 0.22);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+  .info-card--primary {
+    background: #EAF1FF;
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: var(--shadow-lg);
+  }
+  /* Tap feedback — same highlight + slight scale */
+  .info-card:active {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 }
 
 /* Phones (<= 576px) */
