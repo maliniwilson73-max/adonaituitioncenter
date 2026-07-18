@@ -46,15 +46,10 @@
 
   /* "Get in Touch" cards: show the desktop hover highlight by default on mobile */
   .info-card {
-    background: #F5F9FF;
-    border-color: rgba(37, 99, 235, 0.22);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
-  }
-  .info-card--primary {
     background: #EAF1FF;
     border-color: rgba(37, 99, 235, 0.4);
     box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
   }
   /* Tap feedback — same highlight + slight scale */
   .info-card:active {
