@@ -360,16 +360,16 @@
               <div class="err">Please select a class.</div>
             </div>
             <div class="field">
-              <label for="csubject">Subject <span class="req">*</span></label>
-              <select id="csubject" data-validate="required">
-                <option value="">Select Subject</option>
-                <option>English</option>
-                <option>Tamil</option>
-                <option>Mathematics</option>
-                <option>Science</option>
-                <option>Social Studies</option>
-              </select>
-              <div class="err">Please select a subject.</div>
+              <label id="subjectsLabel">Subjects <span class="req">*</span></label>
+              <div class="checkbox-grid" data-checkgroup role="group" aria-labelledby="subjectsLabel">
+                <label class="check-opt"><input type="checkbox" name="subjects" value="English" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">English</span></label>
+                <label class="check-opt"><input type="checkbox" name="subjects" value="Tamil" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">Tamil</span></label>
+                <label class="check-opt"><input type="checkbox" name="subjects" value="Mathematics" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">Mathematics</span></label>
+                <label class="check-opt"><input type="checkbox" name="subjects" value="Science" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">Science</span></label>
+                <label class="check-opt"><input type="checkbox" name="subjects" value="Social Studies" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">Social Studies</span></label>
+                <label class="check-opt check-all"><input type="checkbox" name="subjects" value="All Subjects" data-all="true" /><span class="cbox" aria-hidden="true"></span><span class="ctxt">All Subjects</span></label>
+              </div>
+              <div class="err">Please select at least one subject.</div>
             </div>
             <div class="field">
               <label for="cschool">School Name</label>

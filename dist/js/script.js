@@ -97,6 +97,13 @@
     name: (v) => /^[a-zA-ZÀ-ɏ .'-]{2,}$/.test(v.trim())
   };
   const validateField = (field) => {
+    // Checkbox group (e.g. Subjects) — valid when at least one box is checked
+    const group = field.querySelector('[data-checkgroup]');
+    if (group) {
+      const ok = group.querySelectorAll('input[type="checkbox"]:checked').length > 0;
+      field.classList.toggle('invalid', !ok);
+      return ok;
+    }
     const input = field.querySelector('input, select, textarea');
     if (!input) return true;
     const rules = (input.dataset.validate || '').split(' ').filter(Boolean);
@@ -114,6 +121,25 @@
       input && input.addEventListener('blur', () => validateField(f));
       input && input.addEventListener('input', () => { if (f.classList.contains('invalid')) validateField(f); });
     });
+
+    /* Subjects checkbox group + "All Subjects" logic */
+    const group = form.querySelector('[data-checkgroup]');
+    let resetGroup = null;
+    if (group) {
+      const groupField = group.closest('.field');
+      const allBox = group.querySelector('input[data-all]');
+      const boxes = Array.from(group.querySelectorAll('input[type="checkbox"]')).filter(cb => cb !== allBox);
+      // When "All Subjects" is checked: check + disable the individual boxes; when unchecked: re-enable them
+      const applyAll = () => boxes.forEach(cb => { cb.disabled = allBox.checked; if (allBox.checked) cb.checked = true; });
+      allBox.addEventListener('change', () => { applyAll(); validateField(groupField); });
+      boxes.forEach(cb => cb.addEventListener('change', () => {
+        allBox.checked = boxes.every(x => x.checked);   // auto-check "All" when every subject is picked
+        applyAll();
+        validateField(groupField);
+      }));
+      resetGroup = () => { allBox.checked = false; boxes.forEach(cb => { cb.checked = false; cb.disabled = false; }); };
+    }
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       let ok = true;
@@ -122,11 +148,13 @@
         const s = $('.form-success', form);
         if (s) { s.classList.add('show'); s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
         form.reset();
+        resetGroup && resetGroup();
         setTimeout(() => s && s.classList.remove('show'), 6000);
       } else {
         const first = $('.field.invalid', form);
         first && first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        first && first.querySelector('input, select, textarea').focus();
+        const fi = first && first.querySelector('input, select, textarea');
+        fi && fi.focus();
       }
     });
   });
