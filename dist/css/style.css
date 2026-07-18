@@ -139,8 +139,9 @@ img { max-width: 100%; height: auto; display: block; }
 }
 /* Tablet: narrow the measure so it splits into two lines at the phrase boundary */
 @media (max-width: 992px) { .hero h1 { max-width: 20ch; font-size: clamp(2.1rem, 5vw, 2.8rem); } }
-/* Mobile: slightly larger type + tighter measure for the natural 3-line split */
-@media (max-width: 560px) { .hero h1 { max-width: 12ch; font-size: clamp(2rem, 8vw, 2.6rem); } }
+/* Mobile: full-width measure so every line (incl. line 3) centers cleanly;
+   font size drives the natural 3-line split */
+@media (max-width: 560px) { .hero h1 { max-width: none; font-size: clamp(1.8rem, 8.6vw, 2.75rem); } }
 .hero p { color: rgba(255,255,255,.92); font-size: clamp(1.05rem, 2vw, 1.35rem); max-width: 42rem; margin: 0 auto 2.2rem; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 .hero-stats { display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 3.5rem); justify-content: center; margin-top: 3rem; }
