@@ -145,6 +145,27 @@
       let ok = true;
       fields.forEach(f => { if (!validateField(f)) ok = false; });
       if (ok) {
+        // Compose the enquiry and open WhatsApp to the centre's number
+        if (form.querySelector('#cname')) {
+          const val = (id) => { const el = form.querySelector('#' + id); return el ? el.value.trim() : ''; };
+          let subj = '-';
+          if (group) {
+            const picked = Array.from(group.querySelectorAll('input[type="checkbox"]:checked')).map(c => c.value);
+            subj = picked.includes('All Subjects') ? 'All Subjects' : (picked.join(', ') || '-');
+          }
+          const msg = [
+            '*New Enquiry - Adonai Tuition Center*',
+            'Student: ' + val('cname'),
+            'Parent/Guardian: ' + val('cparent'),
+            'Program: ' + val('cprogram'),
+            'Class: ' + val('cclass'),
+            'Subjects: ' + subj,
+            'School: ' + (val('cschool') || '-'),
+            'Student Phone: ' + (val('cstudentphone') || '-'),
+            'Parent Phone: ' + val('cphone')
+          ].join('\n');
+          window.open('https://wa.me/919841563747?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+        }
         const s = $('.form-success', form);
         if (s) { s.classList.add('show'); s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
         form.reset();
