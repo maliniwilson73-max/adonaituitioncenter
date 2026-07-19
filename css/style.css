@@ -146,10 +146,10 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-wave { position: absolute; left: 0; width: 100%; z-index: 1; line-height: 0; pointer-events: none; }
 .hero-wave svg { display: block; width: 100%; height: 100%; }
 .hero-wave path { fill: #fff; }
-.hero-wave-bottom { bottom: -1px; height: clamp(42px, 6vw, 80px); }
+.hero-wave-bottom { bottom: -1px; height: clamp(26px, 3.5vw, 52px); }
 /* Top wave: same curve depth as the bottom, positioned just below the navbar so
    it stays visible and mirrors the bottom edge */
-.hero-wave-top { top: calc(var(--nav-h) - 1px); height: clamp(42px, 6vw, 80px); transform: rotate(180deg); }
+.hero-wave-top { top: calc(var(--nav-h) - 1px); height: clamp(26px, 3.5vw, 52px); transform: rotate(180deg); }
 .hero::before {
   content: ""; position: absolute; inset: 0;
   background:
