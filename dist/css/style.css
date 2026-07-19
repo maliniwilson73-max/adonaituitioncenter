@@ -140,6 +140,7 @@ img { max-width: 100%; height: auto; display: block; }
 .hero {
   position: relative; display: block; text-align: center;
   padding: calc(var(--nav-h) + 5.5rem) 0 6rem; color: #fff; overflow: hidden;
+  border-radius: 26px;
   background: linear-gradient(135deg, #2563EB 0%, #3B82F6 55%, #60A5FA 100%);
 }
 /* Matching curved dividers at the top and bottom (blend into the white navbar & About) */
