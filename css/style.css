@@ -139,11 +139,17 @@ img { max-width: 100%; height: auto; display: block; }
 /* ---------- Hero ---------- */
 .hero {
   position: relative; display: block; text-align: center;
-  padding: calc(var(--nav-h) + 4rem) 0 4.5rem; color: #fff; overflow: hidden;
-  border-bottom-left-radius: 32px; border-bottom-right-radius: 32px;
-  box-shadow: 0 24px 50px rgba(37, 99, 235, 0.18);
+  padding: calc(var(--nav-h) + 5.5rem) 0 6rem; color: #fff; overflow: hidden;
   background: linear-gradient(135deg, #2563EB 0%, #3B82F6 55%, #60A5FA 100%);
 }
+/* Matching curved dividers at the top and bottom (blend into the white navbar & About) */
+.hero-wave { position: absolute; left: 0; width: 100%; z-index: 1; line-height: 0; pointer-events: none; }
+.hero-wave svg { display: block; width: 100%; height: 100%; }
+.hero-wave path { fill: #fff; }
+.hero-wave-bottom { bottom: -1px; height: clamp(42px, 6vw, 80px); }
+/* Top wave: same curve depth as the bottom, positioned just below the navbar so
+   it stays visible and mirrors the bottom edge */
+.hero-wave-top { top: calc(var(--nav-h) - 1px); height: clamp(42px, 6vw, 80px); transform: rotate(180deg); }
 .hero::before {
   content: ""; position: absolute; inset: 0;
   background:
