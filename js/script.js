@@ -19,11 +19,12 @@
   const toTop = $('#toTop');
   const navSections = $$('main > section, footer');
 
-  // Switch the navbar between light/dark theme based on the section behind it.
-  const applyNavTheme = (dark) => {
+  // Inverse scheme: over a DARK section → WHITE bar (.navbar-light);
+  // over a LIGHT section → DARK-BLUE bar (.navbar-dark).
+  const applyNavTheme = (sectionDark) => {
     if (!nav) return;
-    nav.classList.toggle('navbar-dark-theme', dark);
-    nav.classList.toggle('navbar-light-theme', !dark);
+    nav.classList.toggle('navbar-light', sectionDark);
+    nav.classList.toggle('navbar-dark', !sectionDark);
   };
   let navThemeIO = null;
   const buildNavThemeObserver = () => {
