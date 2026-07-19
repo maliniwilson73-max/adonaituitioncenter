@@ -14,16 +14,40 @@
     if (l) setTimeout(() => l.classList.add('hide'), 300);
   });
 
-  /* Sticky nav + back-to-top */
+  /* Sticky nav + adaptive colour theme + back-to-top */
   const nav = $('#nav');
   const toTop = $('#toTop');
+  const navSections = $$('main > section, footer');
+
+  // Switch the navbar between light/dark theme based on the section behind it.
+  const applyNavTheme = (dark) => {
+    if (!nav) return;
+    nav.classList.toggle('navbar-dark-theme', dark);
+    nav.classList.toggle('navbar-light-theme', !dark);
+  };
+  let navThemeIO = null;
+  const buildNavThemeObserver = () => {
+    if (!nav || !('IntersectionObserver' in window) || !navSections.length) return;
+    if (navThemeIO) navThemeIO.disconnect();
+    const navH = nav.offsetHeight;
+    const bottom = Math.max(0, window.innerHeight - navH - 1);
+    // Root shrinks to a 1px line just below the navbar → only the section under
+    // the navbar reports as intersecting.
+    navThemeIO = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) applyNavTheme(en.target.dataset.nav === 'dark'); });
+    }, { rootMargin: `-${navH}px 0px -${bottom}px 0px`, threshold: 0 });
+    navSections.forEach((s) => navThemeIO.observe(s));
+  };
+
   const onScroll = () => {
     const y = window.scrollY;
-    if (nav) nav.classList.toggle('solid', y > 60);
+    if (nav) nav.classList.toggle('scrolled', y > 60);
     if (toTop) toTop.classList.toggle('show', y > 500);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+  buildNavThemeObserver();
+  let navRz; window.addEventListener('resize', () => { clearTimeout(navRz); navRz = setTimeout(buildNavThemeObserver, 200); }, { passive: true });
   toTop && toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* Mobile menu */

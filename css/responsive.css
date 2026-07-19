@@ -29,11 +29,17 @@
     transform: translateY(-140%); transition: transform .4s var(--ease); max-height: calc(100vh - var(--nav-h)); overflow-y: auto;
   }
   .nav-links.open { transform: translateY(0); }
-  .nav-links a, .nav:not(.solid) .nav-links a { color: var(--ink); padding: .85rem 1rem; border-radius: 10px; font-size: 1.02rem; }
+  /* Drawer is a white panel: links stay dark and the Enroll button stays blue,
+     regardless of the navbar's adaptive theme */
+  .nav-links a,
+  .navbar-dark-theme .nav-links a,
+  .navbar-light-theme .nav-links a { color: var(--ink); padding: .85rem 1rem; border-radius: 10px; font-size: 1.02rem; }
   .nav-links a::after { display: none; }
   .nav-links a:hover, .nav-links a.active { background: var(--bg-alt); }
   .nav-links .nav-cta { display: block; margin: .4rem 0 0; }
   .nav-links .nav-cta .btn { width: 100%; }
+  .navbar-dark-theme .nav-links a.btn,
+  .navbar-light-theme .nav-links a.btn { background: var(--grad-blue); color: #fff; box-shadow: none; }
 }
 
 /* Large phones (<= 768px) */

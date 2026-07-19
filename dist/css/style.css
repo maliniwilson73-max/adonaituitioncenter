@@ -81,30 +81,49 @@ img { max-width: 100%; height: auto; display: block; }
 /* ---------- Navbar ---------- */
 .nav {
   position: fixed; inset: 0 0 auto 0; height: var(--nav-h); z-index: 1000;
-  display: flex; align-items: center; transition: background .35s, box-shadow .35s, height .35s;
-  background: transparent;
+  display: flex; align-items: center; background: transparent;
+  transition: background .35s ease, box-shadow .35s ease, height .35s ease;
 }
-.nav.solid { background: rgba(255,255,255,.96); box-shadow: var(--shadow-sm); backdrop-filter: blur(10px); height: 66px; }
+.nav.scrolled { height: 66px; }
+/* Adaptive themes — set by JS based on the section behind the navbar */
+.navbar-light-theme { background: rgba(255,255,255,.96); box-shadow: var(--shadow-sm); backdrop-filter: blur(10px); }
+.navbar-dark-theme  { background: transparent; box-shadow: none; }
+
 .nav-inner { display: flex; align-items: center; gap: 1rem; width: min(100% - 2rem, var(--container)); margin-inline: auto; }
 .brand { display: flex; align-items: center; gap: .6rem; }
 .brand .cap { width: 40px; height: 40px; border-radius: 11px; background: var(--grad-blue); display: grid; place-items: center; color: #fff; font-size: 1.2rem; flex: none; }
 .brand b { font-family: var(--font-serif); font-size: 1.25rem; line-height: 1; }
 .brand span { display: block; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; margin-top: 3px; }
-.nav.solid .brand b, .nav.solid .brand span { color: var(--navy); }
-.nav:not(.solid) .brand b { color: #fff; }
-.nav:not(.solid) .brand span { color: rgba(255,255,255,.85); }
+
+/* Every colour-adaptive element transitions together */
+.brand b, .brand span, .nav-links a, .nav-toggle { transition: color .3s ease, background .3s ease, border-color .3s ease, box-shadow .3s ease; }
+
+/* Light theme (over white/light sections): dark-blue text/icons */
+.navbar-light-theme .brand b { color: var(--navy); }
+.navbar-light-theme .brand span { color: var(--blue); }
+.navbar-light-theme .nav-links a { color: var(--navy); }
+.navbar-light-theme .nav-toggle { color: var(--navy); }
+/* Dark theme (over dark-blue sections): white text/icons */
+.navbar-dark-theme .brand b { color: #fff; }
+.navbar-dark-theme .brand span { color: rgba(255,255,255,.85); }
+.navbar-dark-theme .nav-links a { color: rgba(255,255,255,.95); }
+.navbar-dark-theme .nav-toggle { color: #fff; }
+
 .nav-links { display: flex; align-items: center; gap: .3rem; margin-left: auto; list-style: none; padding: 0; margin-bottom: 0; }
-.nav-links a { font-weight: 500; font-size: .96rem; padding: .5rem .9rem; border-radius: 8px; position: relative; color: var(--ink); }
-.nav:not(.solid) .nav-links a { color: rgba(255,255,255,.92); }
+.nav-links a { font-weight: 500; font-size: .96rem; padding: .5rem .9rem; border-radius: 8px; position: relative; color: var(--navy); }
 .nav-links a::after { content: ""; position: absolute; left: 50%; bottom: .3rem; width: 0; height: 2px; background: currentColor; transform: translateX(-50%); transition: width .3s var(--ease); }
 .nav-links a:hover::after, .nav-links a.active::after { width: 40%; }
 .nav-cta { margin-left: .6rem; }
-.nav-links a.btn { color: #fff; padding: .6rem 1.4rem; }
-.nav-links a.btn:hover { color: #fff; }
+
+/* "Enroll Now" button swaps with the theme */
+.nav-links a.btn { padding: .6rem 1.4rem; }
 .nav-links a.btn::after { display: none; }
-.nav-toggle { display: none; width: 44px; height: 44px; border: 0; border-radius: 10px; background: transparent; color: inherit; font-size: 1.5rem; cursor: pointer; }
-.nav:not(.solid) .nav-toggle { color: #fff; }
-.nav.solid .nav-toggle { color: var(--navy); }
+.navbar-light-theme .nav-links a.btn { background: var(--grad-blue); color: #fff; box-shadow: 0 8px 20px rgba(37,99,235,.28); }
+.navbar-light-theme .nav-links a.btn:hover { color: #fff; }
+.navbar-dark-theme .nav-links a.btn { background: #fff; color: var(--blue); box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+.navbar-dark-theme .nav-links a.btn:hover { color: var(--blue-dark); }
+
+.nav-toggle { display: none; width: 44px; height: 44px; border: 0; border-radius: 10px; background: transparent; color: var(--navy); font-size: 1.5rem; cursor: pointer; }
 
 /* ---------- Hero ---------- */
 .hero {
