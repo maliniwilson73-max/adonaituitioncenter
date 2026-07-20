@@ -209,3 +209,6 @@ __marimo__/
 # Adonai — large local assets not used by the deployed site
 *.zip
 images/adonaituitioncenterpictures/
+
+# Wrangler local cache
+.wrangler/
